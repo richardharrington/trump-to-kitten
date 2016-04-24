@@ -21,17 +21,31 @@ function foundTheDonald(image) {
   });
 }
 
-function meowify(image) {
+function getDimensions(image) {
+  var attrs = arrayify(image.attributes);
+
+  var dimensions;
+  attrs.forEach(function(attr) {
+    var m = attr.nodeValue.match(/\D(\d+)x(\d+)\b/);
+    if (m) {
+      dimensions = m.slice(1, 2);
+    }
+  });
+  return dimensions || [image.clientWidth, image.clientHeight];
+}
+
+
+function meowify(image, dimensions) {
   image.removeAttribute('srcset');
   image.removeAttribute('src');
-  image.setAttribute('src', 'http://placekitten.com/' + image.clientWidth + '/' + image.clientHeight);
+  image.setAttribute('src', 'http://placekitten.com/' + dimensions[0] + '/' + dimensions[1]);
 }
 
 function meowifyAllDonalds() {
   var images = document.querySelectorAll('img');
   arrayify(images).forEach(function(image) {
     if (foundTheDonald(image)) {
-      meowify(image);
+      meowify(image, getDimensions(image));
     }
   });
 }

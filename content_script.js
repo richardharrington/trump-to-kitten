@@ -22,6 +22,9 @@ function foundTheDonald(image) {
 }
 
 function getDimensions(image) {
+  // Checks to see if there is an attribute that says '462x312'
+  // or something, which is sometimes a better indicator of
+  // the proper dimensions than clientWidth and clientHeight
   var attrs = arrayify(image.attributes);
 
   var dimensions;

@@ -2,8 +2,12 @@
     "manifest_version": 2,
     "name": "Trump to Kitten",
     "short_name": "T2K",
-    "version": "1.0.0",
-    "description": "Replaces pictures of Trump with pictures of kittens; a Donald-oriented version of Stop Tony Meow",
+    "version": "1.0.1",
+    "description": "Replaces pictures of Trump with pictures of kittens",
+    "icons": {
+        "48": "icons/ttk-48.png",
+        "96": "icons/ttk-96.png"
+    },
     "content_scripts":
     [
         {
